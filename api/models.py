@@ -61,7 +61,7 @@ class BaseHandler(tornado.web.RequestHandler):
 
     # 提交
     def post(self, *args, **kwargs):
-        with json_deserializer(self.request.body.decode('utf8')) as json_str:
+        with json_deserializer(self.request.body) as json_str:
             uid = json_str.get('id', '')
             res = self.col.find_one({"id": uid}, self.show_field)
             if uid:

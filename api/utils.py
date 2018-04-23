@@ -34,7 +34,7 @@ class MongodbUtils():
 @contextlib.contextmanager
 def json_deserializer(my_str):
     try:
-        yield json.loads(my_str)
+        yield json.loads(my_str).decode('utf8')
     except ValueError:
         # log here not vaild JSON
         yield {"status":"not valid json"}
